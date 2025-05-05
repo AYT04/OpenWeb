@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<title>AYTClips - Watch, Listen and Learn</title>
+
+<style>
+  * {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('./');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#aytclips {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#aytclips li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#aytclips li a:hover:not(.header) {
+  background-color: #eee;
+}
+</style>
+
+<script>
+  function myFunction() {
+    var input, filter, p, ul, li, a, i, txtValue;
+    input = document.getElementById("clipsearch");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("aytclips");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("h3")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+<body>
+
+<h1><center>AYTClips Library</h1>
+
+<div class="topnav">
+  <a class="active" href="https://x.com/AddisonYT04">Contact</a>
+  <a href="./LICENSE">LICENSE</a>
+  <div class="search-container">
+    <form action="#">
+      <input type="text" id="clipsearch"
+      onkeyup="myFunction()"
+      placeholder="Search Clip..">
+    </form>
+  </div>
+</div>
+
+<ul id="aytclips">
+<br><br>
+<li>
+  <a href="https://www.youtube.com/embed/tsEWG-VbDAQ?clip=UgkxaQlRwGY2iIogQ3PMk3LnKAgxVTvm1pfE&clipt=EPyKExjC-RU" target="_blank">
+  <h3>Heads Up | Birthday | Security Questions</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/STuhKAfehK4?clip=UgkxpnaK7c6_fAuFMc8hitf_duv3DkHTuDkr&amp;clipt=EJaCDhj6xg4" target="_blank">
+  <h3>"You Can Have Your Cake And Eat It Too" - SomeOrdinaryGamers</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/QOAz9T96WyU?clip=Ugkxpi0OP9UiDOOUfe1OFPuUXZxLDHpcCIaI&amp;clipt=EPXKGRjVnx0" target="_blank">
+  <h3>End2EndEncryption</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/fysHA9yazNM?clip=UgkxE-PNvHtnhsSSgSqGZSVGtjCSDrdd5nPr&amp;clipt=EO_nNxjPvDs" target="_blank">
+  <h3>Depression</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/TVSE5wusBuE?clip=Ugkx6ULT6Nh5ER0BW4pOp-TWaqBzvYSXAHrs&amp;clipt=ENrMBxiciQk" target="_blank">
+  <h3>Buffer</h3>
+  <p>LinusTechTips</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/wgZlQbDY6QA?clip=UgkxdlD0p6UrbuSp8yB2m3oYvAM6ZrOEqlzz&amp;clipt=EOLSLRjR8i8" target="_blank">
+  <h3>QEMU-KVM</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/hcHgxWwFTVk?clip=Ugkxt14OVNEbgc3hcmNo3BX8uycTKmJO6v8v&amp;clipt=EKGLIBjWkSM" target="_blank">
+  <h3>Entropy Data Set</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/ZW3RLtzVzQY?clip=UgkxR4Ktl9Ly9_RK69_k_u9c_aX6egRjeXR0&amp;clipt=EITlGRiMjBo" target="_blank">
+  <h3>"Do What You Enjoy In Your Life" - Jess</h3>
+  <p>JessWithTheS</p>
+  <q>This Clip is currently <b>Private</b>
+    until we get it sorted out with the creator.
+  </q></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/N2Y0E5siWbo?clip=UgkxNq-LkOvYOI0GZN_8tlr4DgXquOBE3RUS&amp;clipt=EN6kDhjeiRE" target="_blank">
+  <h3>Old Form of <b>PEMDAS</b></h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/oiqqJCL_6lU?clip=UgkxPuXVDFqnlXbGFzfC35BTF0YRAI6OMByY&amp;clipt=EIHcMhiagDU" target="_blank">
+  <h3>Backup</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/X6xGFU1okl0" target="_blank">
+  <h3>Graphics API</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/vXkuyeYaTro?clip=Ugkx-G86Ry-EEeF7MfA4I32wurt2a3kpFjuT&amp;clipt=EJ2yFxj9hhs" target="_blank">
+  <h3>Compile Kernel</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/RXSY_I5Fsqg?clip=Ugkxmz3ulX0aF1oNuO5QPaGNpmBheZa2-ur0&amp;clipt=EPXkCxiN2gw" target="_blank">
+  <h3>Hackintosh</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/wsS5Ji8DQw4?clip=UgkxTQMRI5qrMl6PN8_AmT6VJRhgqFI5TOQm&amp;clipt=ENWvKhj6xCs" target="_blank">
+  <h3>IOS Development</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/Jp8juZpVDr4?clip=UgkxpBusLzcXownbCYe0MzRNmY2mnz-gibgJ&amp;clipt=EIPdHhjL0SA" target="_blank">
+  <h3>BitTorrent</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/NKmJKFZlMeg?clip=UgkxdymiXUtUg44eTWvMH5abZ8Qy3Wppqcle&amp;clipt=EPnrQBjvo0I" target="_blank">
+  <h3>Tracker</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/doM7cbN1sJQ?clip=UgkxSa2Z0U5kRw8_HhN_Gbob4GKPlQIU7rKe&amp;clipt=EJipFhjCsBg" target="_blank">
+  <h3>data you reproduce can dictate the life going forward</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/doM7cbN1sJQ?clip=Ugkxq2o5yIbgIx5sObAcHZXXEPO7i-AyjqtB&amp;clipt=EJ_dLBj83y0" target="_blank">
+  <h3>in order to function the world we created</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/8xNra8jmHVE?clip=UgkxuyJRBuLI4MOgySCpWlgykDX4ih_zKFDO&amp;clipt=ELbnCRjyzww" target="_blank">
+  <h3>downloading from your service</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/qTtgzNGRAfA?clip=UgkxOmTK9cIKLMCF1Wxy8vCW7PG3f9NtccTA&amp;clipt=EI7MHRiJmiA" target="_blank">
+  <h3>privacy is a basic human right</h3>
+  <p>MrWhoseTheBoss</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/q8Ngv2EVJMY?clip=UgkxHV94K9ZJN-G_FQSBfGCQ12ZVSEByQal9&amp;clipt=ENOXMRjDwTM" target="_blank">
+  <h3>I don't care but do care</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="./unavailable.jpeg" target="_blank">
+  <h3>IP Address</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/QbPp6FKFWJI?clip=UgkxvsNyx06FoJ45UMOBQxkf2piJb-5XXho8&amp;clipt=EM-NFxj3shk" target="_blank">
+  <h3>Cache</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/pa6Dc9vd-vg?clip=Ugkx0mJJ79HBqncBa2D3YzGPse3cn7y96YUw&amp;clipt=EO-UGxju6hw" target="_blank">
+  <h3>Macros</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/pa6Dc9vd-vg?clip=Ugkxx5Tvpu90eazQDGIzgIFo-UeStbyorChG&amp;clipt=EPnmHBjYth4" target="_blank">
+  <h3>Administrator Privileges</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/ghRVJq3zTKY?clip=UgkxTz9FxSGwQWuuDDQ2Jb_tIzku-2hfQxAe&amp;clipt=EPucFBjpwRY" target="_blank">
+  <h3>Bad Port Forwarding</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/3Dlxp-X7O54?clip=UgkxlM9a3BXdXEKyhgiQLw-zmqGsMmFhDIYO&amp;clipt=ENX-MBjf4TE" target="_blank">
+  <h3>18</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/qCRelZ61aUQ?clip=UgkxHjsuv0-SmDrF7QRCAjNVIoU2KZyCDHN1&amp;clipt=EJOUDhjywRA" target="_blank">
+  <h3>Executing Files</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/ChWfwc9AmMQ?clip=Ugkx7Ds2kkn5pxGJ0t3Zyk0fN8TEheG7WG7k&amp;clipt=EKy8DRiU-hA" target="_blank">
+  <h3>Encryption Keys</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/HDPWzyZYuIY?clip=Ugkx3GOpcxT63YOWMlzIEeUTj2r53RZomsGd&amp;clipt=EKHWAhjBlgU" target="_blank">
+  <h3>Content Tip</h3>
+  <p>CoryxKenshin</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/OfM0GqsIB6c?clip=Ugkxrk5wyXjRBa3nL2iHjM1LSmZTImTwh1UU&amp;clipt=ELCJHBjKiR4" target="_blank">
+  <h3>Wo</h3>
+  <p>MrWhoseTheBoss</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/n5AvrPbrCs4?clip=UgkxKujpI5kaUGiH6Ceh2r3I8TXytZkT0qwj&amp;clipt=ELXmzAIYnvjOAg" target="_blank">
+  <h3>Relationships</h3>
+  <p>SomeOrdinaryGamers - Fan Archive Channel</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/V72WIWIjdz0?clip=UgkxNX-rRGp_2Jfn5XVULNqqjttmdJo5xiGl&amp;clipt=EJGGIBi2xyI" target="_blank">
+  <h3>Firewall</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/My6EUC6cTrw?clip=UgkxkypBrmmwTUOXvSdSTr1CQ1cnsbCR-K--&amp;clipt=EL_qDxiokxE" target="_blank">
+  <h3>BillC11 - BillC10</h3>
+  <p>J.J. McCullough</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/WRehtw7l7qM?clip=Ugkx3153mPWF3_dNd9BjBL-He148-3yiEAVL&amp;clipt=EKO-Shih300" target="_blank">
+  <h3>Masturbation</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/T5BAS9CScZQ?clip=UgkxggTdY83JAwzS5KGsNeR7Vo-mWuPteQ4p&amp;clipt=EOSzAhiMnAU" target="_blank">
+  <h3>Don't Help</h3>
+  <p>Prince Ea</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/CxPlmHcfguY?clip=UgkxhJ9MWyFt7-pimSMUQRMFLc5_NiIPxvKJ&amp;clipt=ENz9Jhjvvyk" target="_blank">
+  <h3>App Based 2FA</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/hcHgxWwFTVk?clip=UgkxgnNQywgFEJvtw_2Fb_hqNPqLBodWJY9K&amp;clipt=EOqKPxi1m0E" target="_blank">
+  <h3>Sudo + Root</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/B7kwdDMfKAg?clip=UgkxCmLIs0dJq82Nk02b6m0STBZC5_LaMqR1&amp;clipt=EKWzHBiMlB0" target="_blank">
+  <h3>woof</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/NVJckF-8eWc?clip=UgkxvfRsh0nLiShTFdpJ3rwO1czvgYPdutHo&amp;clipt=EIXVMBjb7TE" target="_blank">
+  <h3>CPU</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/mgyFT2pj038?clip=Ugkx5hOEIX2GzdZPTKcr_aD6qTScxc2xHPnk&amp;clipt=EMb5Jxj-1yk" target="_blank">
+  <h3>protect your data</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/ko8_s1ucS0w?clip=UgkxB9-5m7CupCaFKkYwga25wYucYLaeRFV2&amp;clipt=EKvcJhiXxCc" target="_blank">
+  <h3>software emulation</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/OfMs0rmDCuA?clip=UgkxNTQcQ1M1IVIsm7LyY3IVoLb72BK6y2uX&amp;clipt=EJCcCRiglgo" target="_blank">
+  <h3>call it a night *night city emoji*</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/YwB_tYl_D10?clip=Ugkx8eHOnHP4lZ0TZ79E_-0XN7ZsdcksfDvd&amp;clipt=EOaPARjTvQE" target="_blank">
+  <h3>Linda</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/aiVEzkAX4LU?clip=UgkxH5ADRD2CtNOvtZfSfC8RFDbvHA9VUQGE&amp;clipt=EJr0Ahi8yAQ" target="_blank">
+  <h3>Supply Chain Attack</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/iXKvwPjCGnY?clip=UgkxsG2mOuqAnAmpRpsNc6MwEO0pwhQhiYWq&amp;clipt=EPvbEBipiBQ" target="_blank">
+  <h3>Android RGB Colour Space</h3>
+  <p>MrWhoseTheBoss</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/HZpyIORJYGs?clip=UgkxPlZhnJM_wx2cB-XJdHdY4ogLFusRa_1H&amp;clipt=ENzHBRiT0gY" target="_blank">
+  <h3>5 Muslims Prayers</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/v_1iqtOnUMg?clip=UgkxplIw4zqKReZfB6ZJ1-byJ0e35XIL0Nzi&amp;clipt=EL__EhjxpBU" target="_blank">
+  <h3>selling software and open source</h3>
+  <p>ChrisTitusTech</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/RXSY_I5Fsqg?clip=UgkxQXl-YfJlgnJAk9_5pLWqxHj_XHQbNeqi&amp;clipt=ENewJRjrjCc" target="_blank">
+  <h3>Rosetta | translates X86 to arm</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/wyJl5nJpHME?clip=Ugkx7jTbdDNXTssZosKo7KjDSzzPGeDv9Ycy&amp;clipt=EMGSFBjLlBU" target="_blank">
+  <h3>YouTube CSAI</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/xqiKDBupYfQ?clip=Ugkx9SK6HmLo6kKlL_RAsTScVsyUA6USRc7C&amp;clipt=EM6XDRjFhQ8" target="_blank">
+  <h3>Prevent Phishing Email Scams</h3>
+  <p>Robert Benjamin</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/HxsV_cPjPuc?clip=UgkxZbB_6ejGmsT9FGwEl8oQm5Q8ttHSw_7K&amp;clipt=EP-LLRimjDA" target="_blank">
+  <h3>ilysmidkhtf hahaha *laughing emoji*</h3>
+  <p>Jarvis Johnson</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/9vZoImdnE0A?clip=UgkxHRsqqh5x7zxFkc0PTVY2PUf9lcSPnBU1&amp;clipt=ENfBFBiEhBU" target="_blank">
+  <h3>Why use an antivirus when there is windows defender?</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/a2YMZvgc29A?clip=Ugkxqx_bdCUuGAiBfx92pqQNMjTG_ycnHPKy&amp;clipt=EIDJGBiFrho" target="_blank">
+  <h3>how to set up a VPN on GTA online</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/BQ_aiMjVyPI?clip=Ugkx-mvPA-DExNYqzfPMbmxhvoMB8lN0XZG5&amp;clipt=EPajERjA2BE" target="_blank">
+  <h3>eh</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/BQ_aiMjVyPI?clip=Ugkx3NI-VoZ0aUJLFuPfzim-i_15K92qWFM0&amp;clipt=EOWRExjtuBM" target="_blank">
+  <h3>Netflix: are you still watching? Someone's Daughter:</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/8xNra8jmHVE?clip=UgkxqriF3tgi9yYzaIz4Y30hmy6NtOArTsN9&amp;clipt=EL2uJBi3sCc" target="_blank">
+  <h3>DMCA exception</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/tsEWG-VbDAQ?clip=UgkxTDGpItMaFx3HCltIr_xLLXIgNr-Vsc1k&amp;clipt=EKfkIRjzgSM" target="_blank">
+  <h3>30 Virtual machines? Performance..</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/1ssUpHjTigU?clip=UgkxV_6cDFf1sdZVbl390beUE46Ubt48t53N&amp;clipt=EPKeDBiS9Aw" target="_blank">
+  <h3>hahaha 🤣</h3>
+  <p>Lazarbeam</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/My6EUC6cTrw?clip=UgkxrileDf-mLJ0HeiyLw608HhjkODc3Oscd&amp;clipt=EPvVDhjx0A8" target="_blank">
+  <h3>freedom internet</h3>
+  <p>J.J. McCullough</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/PrOTKXO3hls?clip=Ugkxn_puHY6WgmCt2D2rkHopaZA5S1k1d2Zv&amp;clipt=EIKLNRio0jg" target="_blank">
+  <h3>moral argument</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/tdeKDC_TY0o?clip=UgkxJz5o81_V6kSlXU3FA0_YQ8Sr3s2IIh_o&amp;clipt=EIGKFBiUlBU" target="_blank">
+  <h3>*I think that's bad*</h3>
+  <p>Answer in Progress</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/lU5hZjnhMwI?clip=UgkxFTmL8nEdK14Xs38j7XoxY4JlKwXv3gHA&amp;clipt=EJDUHBi9mx4" target="_blank">
+  <h3>Self Defence Canada</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/EGZzSrMWJfs?clip=UgkxYucYEqhYZPdxHeDLCXSds1BUSz7w0kzJ&amp;clipt=ENb6CxihoA0" target="_blank">
+  <h3>Tics</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/M_v-xGsr0iE?clip=UgkxQzmMZEBWGgXjI0bBOrIjYbbPEyrjsvPc&amp;clipt=ELTnBxjH8wg" target="_blank">
+  <h3>firepit</h3>
+  <p>Tannar</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/NQSHro0pFu8?clip=UgkxITnEHgdmlsfD-7E_7wE0fzx0qa0t1WHf&amp;clipt=EKPKKRiPyCo" target="_blank">
+  <h3>Having Muliple Choices</h3>
+  <p>Captian Sparklez</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/NKmJKFZlMeg?clip=UgkxHgtofMiyzFbWt-pY3K9CLjuhlUPJSshP&amp;clipt=EM78Jhicvig" target="_blank">
+  <h3>Human Trafficking</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/zQFNlTBDvto?clip=UgkxN6fpP4FidjkhJia7V_qEeSAmaOy0Ip7x&amp;clipt=ELjsNBjorzY" target="_blank">
+  <h3>TTYL</h3>
+  <p>ChrisTitusTech</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/wvXBsDH2QNk?clip=Ugkx1ojSd3r-e8qy3An-6fkc2N4XU27y5v-N&amp;clipt=ENzUIhj0ySM" target="_blank">
+  <h3>CPU Emulation</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/0J35G-yci5c?clip=UgkxRI0BB2VN-cNE_DhoOqFRLMPlDjpfD642&amp;clipt=EOKbMhjp-TI" target="_blank">
+  <h3>Never Shoot In Order</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/-cJfZR59p-A?clip=UgkxRAdEIKjT84uXs-eqaN9JlqBia-vg1P5K&amp;clipt=EMLIGhiG2Bs" target="_blank">
+  <h3>Perspective</h3>
+  <p>Nathan Zed</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/zYpyS2HaZHM?clip=Ugkxq5EJ0WRMIPhxzARnhyC70aGPaS5-5484&amp;clipt=ELKkoQIYs5WjAg" target="_blank">
+  <h3>AI and Machine Learning</h3>
+  <p>LinusTechTips</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/B5FDeNog_2A?clip=UgkxAxdiYVjPO6_nYDHtWDuPJ2rb496-y8UA&amp;clipt=EKGlGRi5mho" target="_blank">
+  <h3>Private Compute Core</h3>
+  <p>LinusTechTips</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/CZ_az-HUh8I?clip=UgkxfZ-IgBqNIhHwkjttON3cEXESg_IVm9GS&amp;clipt=ENTLARjswAI" target="_blank">
+  <h3>Video Game Alive</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/ae7LDRZyBMI?clip=UgkxZ4CXZ2uwtqvRSKlew7gxMt1MFEiMfLUo&amp;clipt=EKvRCxiLpg8" target="_blank">
+  <h3>DDOS</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/-LTIJgHVvms?clip=Ugkx2zHoa_octK7KgDmqVlqq92atfT01AuUq&amp;clipt=EIrjJBj-qCY" target="_blank">
+  <h3>MAC Address</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/856ajI4MUHA?clip=UgkxFIsh-wnEwQQMgc5BiXq1wgdxgdaNf6i1&amp;clipt=EI-TEhi4jBM" target="_blank">
+  <h3>School Student Names</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/ewMFVh2ByvM?clip=Ugkx2mL71rbkCbomWltTVKu1scSAEdwvEGZr&amp;clipt=EJ6fHhimtx8" target="_blank">
+  <h3>PCI Express Slot</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/012PptHgl3s?clip=UgkxqKWUhKFf4IhqElYJicSrJSDoTLIiKTjn&amp;clipt=EInLFhj5rBk" target="_blank">
+  <h3>Compatibilty Layer</h3>
+  <p>ModernVintageGamer</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/mlgMGuOX4lk?clip=UgkxY98sq5ALWF9OCfRE201apono7fuNhpt9&amp;clipt=EKWrEBjjyRI" target="_blank">
+  <h3>Copyright & Trademark</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/Ti8v4eL8oIE?clip=UgkxZuBh3_kcOrxKUeKAPIIESj5-4QEXL4qA&amp;clipt=EI7yMhjBjjU" target="_blank">
+  <h3>Edward Snowden</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/arvhAuzk5Y8?clip=Ugkx_DPrOGKFVubzWCSknSzw9A2AhhZOBV3s&amp;clipt=EKSfERi6zBE" target="_blank">
+  <h3>Packet Loss</h3>
+  <p>Lazarbeam</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/9CpH10mzgHw?clip=UgkxGJ_5BhTHzDdPYfjwSqhCxDTfVJNbTE5E&amp;clipt=EO_GFRj37RU" target="_blank">
+  <h3>Patience</h3>
+  <p>Dhar Mann</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/MKswsltqPVQ?clip=UgkxtghwSNsLZNf-ZJQtUFTv4a_UPlTrmoGu&amp;clipt=ENShEhiD-BI" target="_blank">
+  <h3>"If you follow your passion it'll always lead to success"</h3>
+  <p>Dhar Mann</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/oiqqJCL_6lU?clip=UgkxR0senzvef9MEpWWJI1BLrbfAz9-66R3f&amp;clipt=EMqiGhin7xs" target="_blank">
+  <h3>Is Piracy Morally Ok?</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/AHR_7jFCMeY?clip=Ugkx7PNbMYt0q2dxw-eSMrAq06IQ9x5CKsEJ&amp;clipt=EPjIBxjYnQs" target="_blank">
+  <h3>Five. Features of Data Warehousing</h3>
+  <p>365 Data Science</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/xNRSVQdzWCQ?clip=Ugkx9iPy92FOxXsJjaO-aSZkWWXTpnkhG0pw&amp;clipt=EM7WFhifyRc" target="_blank">
+  <h3>JSON - MetaData</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/ae7LDRZyBMI?clip=UgkxDi4oNfjinx7VygaeRrdTrqCv4g7yYkwp&amp;clipt=EJv9Bxiy8gg" target="_blank">
+  <h3>Cyber Attack</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/fZ8ITadKEuI?clip=Ugkx94vXEtDANNhCKI4-AUaLtsiOkTMmp-6i&amp;clipt=ENynIRjOiSI" target="_blank">
+  <h3>Never Download anything from others without sending it through virustotal</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/CYYEwNc8Eaw?clip=UgkxIE5AyhRcy98IH3Jw9-tzNSJVf7aSBNod&amp;clipt=EOHAGxjp4xw" target="_blank">
+  <h3>Privacy is getting Razar thin</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/u1M2Gnweizo?clip=Ugkxwos_e91oRIAl9GVLaSi-gjNz-ob5x0Wn&amp;clipt=EPTsIBi4jCQ" target="_blank">
+  <h3>MD5 CheckSum</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/Ti8v4eL8oIE?clip=UgkxsikfAhnwk2UcSYYtUV_rqNPKEna5OjZa&amp;clipt=EPiaPBj99j0" target="_blank">
+  <h3>Data is more worth than Gold</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/smNuREXq5wc?clip=Ugkxe09OjJvgtdPqDLhLQSj0Et_TLu-oBzMM&amp;clipt=EPi3CBjCwQk" target="_blank">
+  <h3>Most Computers can run a VM - Extra Security</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/tiBqjOyfx-g?clip=UgkxvzeoylpjfWYIWW3q_2dTONJBtqDY7X4t&amp;clipt=EOHAMxjZ5jY" target="_blank">
+  <h3>Sex Education</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/HKrw_Cwahb8?clip=UgkxwvTw6gm_VSxMZj0uNXkDLlbcSw4Cz3n0&amp;clipt=EIK7EhisuBU" target="_blank">
+  <h3>Mask Banking Details</h3>
+  <p>Pleasent Green</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/R-SupwggH0k?clip=UgkxzjUx57N2IWlUhCDfeL-VOGrbOcbE9Rjg&amp;clipt=ENX8Chjs8Qs" target="_blank">
+  <h3>Literally</h3>
+  <p>Ruby Granger</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/drrGnpX0W8o?clip=UgkxlQ5rMUU01-zO1F1mxszFq5HUkfwzG_zl&amp;clipt=EJXjDxit2BA" target="_blank">
+  <h3>Sucks to be a Linux User</h3>
+  <p>LukeTheNotable</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/a9PEF-51BIg?clip=Ugkx3TQ2yxg3L-PpDTlggvtn2yQWx8l7sFAN&amp;clipt=EI36IRjq2iM" target="_blank">
+  <h3>Daz Watches Horror</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/yChe0kxywbo?clip=UgkxDmKaE9f6uO4HP_abAh-Wd5zg-k008XTH&amp;clipt=EMn_Fxjh9Bg" target="_blank">
+  <h3>In Game Doxxer</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/JHRQ0za4NIU?clip=Ugkx45QNUxku1C5WEmy0TGClwO1CchNsI8Jn&amp;clipt=ELPL9AIYhs32Ag" target="_blank">
+  <h3>Job</h3>
+  <p>LinusTechTips</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/DmKMi_XjIqA?clip=UgkxUPy0-MFQi7AEi0UQFKJte_rgFQl2XMMW&amp;clipt=ENyjFBjzmBU" target="_blank">
+  <h3>Trust Level Colour Coded</h3>
+  <p>Mental Outlaw</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/6ltBpl6NFP8?clip=Ugkx-2jECnguSBuva2fWYcqhM10nQ4seOf2I&amp;clipt=EP3CAhjZggQ" target="_blank">
+  <h3>WeeWoo</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/TbHDeEcvm10?clip=UgkxQtSKEnDxIltPWEjqJtkX_iIukxMeyY9J&amp;clipt=EPH5LxjRzjM" target="_blank">
+  <h3>Most Do</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/doMyAMJvu_Y?clip=UgkxgCvKcan2c-7Js4bogs7tjB_HXdZw6vJm&amp;clipt=EKWYFxi9jRg" target="_blank">
+  <h3>Favourite Memories Santa Clause</h3>
+  <p>DharMann</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/MZStPwNaGZ4?clip=UgkxWmQIfiTuRLZTdhCbzqzyYBPJv9339Yv7&amp;clipt=EJ7KMRiA7jI" target="_blank">
+  <h3>Twitch Terrified</h3>
+  <p>SomeOrdinaryPodcast</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/nLlEef7OaLY?clip=UgkxI7pip0d9Qn8CYrs5KBlkXsjpOky4kw92&amp;clipt=EJ2YGBiKsRk" target="_blank">
+  <h3>Macros</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/klZRsE99ep0?clip=UgkxiGQEZkMKnT-J9z7K7Awmbohi0L4gQKrU&amp;clipt=EMWoEBjcnRE" target="_blank">
+  <h3>Muta</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/J3Ups5yT7P4?clip=UgkxF9ldr57DeP9O2_71kQFe6K8vTKeFzuua&amp;clipt=EPniwQEY2bfFAQ" target="_blank">
+  <h3>Be a Good Person</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/wvXBsDH2QNk?clip=UgkxA3qjsg-Ozmhx_BgsMQ0kVjPxGtHLWBCo&amp;clipt=EIPGLhilji8" target="_blank">
+  <h3>Surveys are Sketchy</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/KN3c3Hqd-fM?clip=UgkxZ1iLlW0enOhxnG_MY1PG1nVHBBk9zQfb&amp;clipt=EMuoGRjXkho" target="_blank">
+  <h3>"You Serious"</h3>
+  <p>JessWithTheS</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/xhbVW86PeJ4?clip=Ugkx5ltrbBtBt8QSfN37qzEdxO4SZ4pd7Z2X&amp;clipt=EPPgGhjVoBs" target="_blank">
+  <h3>Lemon</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/k--hnLMqhcg?clip=UgkxGwLtDGI6f5sj_sp6Sy55R_ez2JP17zvJ&amp;clipt=ELm2KRjW_Sk" target="_blank">
+  <h3>Mental Outlaw | Privacy</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/gGTxNrDMtoA?clip=UgkxOW3wx1OTdz33rNtGHQoQYydKVn2jiO_J&amp;clipt=EOK3BhiY8gY" target="_blank">
+  <h3>suck it off and throw it away...</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/8dIf4sBpoiQ?clip=UgkxhtGKSz546D2IWMuNWrUTjO9S4cfPV0X8&amp;clipt=EI6mAxj5vAU" target="_blank">
+  <h3>Linux Monolithic Kernel</h3>
+  <p>Brodie Robertson</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/WsQV1boFCLk?clip=UgkxPA63o0_HPxDuIy_nF1yi5DSDw3ZINige&amp;clipt=ELyPCRiAggo" target="_blank">
+  <h3>Mouse | Software</h3>
+  <p>TommyInnit</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/ph5DjXOxxgw?clip=UgkxVIhUm_d3YMIr5VuCaSaQmPySqTBoGrSV&amp;clipt=EIzHDBi7-w0" target="_blank">
+  <h3>Using Proprietary Software</h3>
+  <p>DistroTube</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/E40lcitQoAs?clip=Ugkxr9LjDcdAoeGWoMlzW1Lg4FZdR_MVqBst&amp;clipt=EJ_bMxjd4jQ" target="_blank">
+  <h3>Lol, wha the fun</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/osqF50XhJEg?si=CxvkaTgSSWmOl1DH&amp;clip=Ugkx9oEBfyigGqhaTZWzfPVqG_dgUy_NJYDh&amp;clipt=ENaNKxjwniw" target="_blank">
+  <h3>100%</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/etyCb38ag-s?si=BAYYJwHQ-t8Nuv5V&amp;clip=UgkxHbSweqRgQKbfVw6Hnw2BUqVMRezZnlbF&amp;clipt=EOC-pwEY1sCoAQ" target="_blank">
+  <h3>Linux | ChromeOS | Gaming</h3>
+  <p>LinusTechTips</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/OAy945DZvp8?si=Mrs5ex71MVm7QGS1&amp;clip=UgkxLsOpgYAEyfg-nkyYz9TsKHn0vd76cjSZ&amp;clipt=EMfCRRjGrUY" target="_blank">
+  <h3>Web Browser</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/PK1Qn-7BpQA?si=XDS64ALX6Syb9r6A&amp;clip=Ugkx2lD7M3tGEBFpI6Aew0b2xesBNmlmIsqk&amp;clipt=EM3VBRi9oQY" target="_blank">
+  <h3>School Problem</h3>
+  <p>Dhar Mann</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/luCVwdkD4Rk?si=c74H7CGUEBmf3fSj&amp;clip=UgkxealKCPBLJfjri0xfefln62EbnD_Z7ymr&amp;clipt=EPa2ERiBtBI" target="_blank">
+  <h3>Uranus</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/mgyFT2pj038?si=w6AcxgZHCv0jbtT0&amp;clip=UgkxzZuYPfU5OQVB-CrRLfsPhBfRLF9_tqsM&amp;clipt=ENWaFBiXixc" target="_blank">
+  <h3>Facebook</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/JU4BN8-Xo88?si=E2bO_SusGcaWFrCs&amp;clip=Ugkxbb4eWrzmYv6TtLTLttVwmKiy1fyLTYC-&amp;clipt=EIC9MhiFyzQ" target="_blank">
+  <h3>Enderman</h3>
+  <p>Ph1LzA</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/d2h-2s4aXmo?si=NYr-4UccMY9G7WpC&amp;clip=UgkxyPtiNXgVbo620Mh4RMq862IqKSLlY_VM&amp;clipt=EKfxDhiNvRA" target="_blank">
+  <h3>Odysee!</h3>
+  <p>CaptainSparklez</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/H_dETg_E7wc?si=BAaewosl_Bn6mIzW&amp;clip=UgkxeuIpaK9Uj5a-ynRy-AUFI-_bgHibhQV_&amp;clipt=EKCbDxj_7xI" target="_blank">
+  <h3>Bridge Sound Waves</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/OQ9Uc_xjUm0?si=11gJmNizb8JmgkGs&amp;clip=Ugkx40Agk51ebpsWeJEK5QRxapiSuYZaca-w&amp;clipt=EIOjLxjNgDI" target="_blank">
+  <h3>"Mom's Bitchin About Life" - Daz Black</h3>
+  <p>Daz Games</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/rgL2rVlzqyA?si=OJ83fVVKKjUoVE_Y&amp;clip=UgkxuMEZ3Z5rd2YbZuwSazn_OSyctNfOMWTi&amp;clipt=EM64FxjmrRg" target="_blank">
+  <h3>Being a Content Creator is <b>Exhausting</b>...</h3>
+  <p>Janelle</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/3gUAWYgCITw?si=7uCjap7fj1U8oOku&amp;clip=UgkxJ8grg8nhR0eXoXb09Ki5kaRCj93X4htK&amp;clipt=EJ_ZBxi3zgg" target="_blank">
+  <h3>Monsters - Crash Adams</h3>
+  <p>Crash Adams</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/wDaufMnafpI?si=59yZIIGz4oA3oh8h&amp;clip=Ugkx80EO_oS3qjcPNOkSHsXnMTjRE563pA0a&amp;clipt=EP3THRiVyR4" target="_blank">
+  <h3>Bad Example of <i>Else If Statements</i>...</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/6Bf1eK9p31Y?si=bxJGnB3ls_qth6D8&amp;clip=UgkxczgPLpaY30jAOmoMqSNwgy0dXg0i93HE&amp;clipt=EN3lDRi9uhE" target="_blank">
+  <h3>Nebula Main Goal</h3>
+  <p>Niko</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/2Ple9F5XOdE?si=y5ak8XZ-IJyGBrCx&amp;clip=UgkxrbMdfpSx7tTTq88SdXm2DrSKm0SBDHuC&amp;clipt=EOLOEhj5wxM" target="_blank">
+  <h3>Sim Swap... Stop Using SMS TFA</h3>
+  <p>Mental Outlaw</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/br1-J7b_Ka4?si=oZ8W0i2-LQmBbepW&amp;clip=Ugkx-13sLN9IT2_qWtL2wnV8rw42tFfBo2Jc&amp;clipt=EJ-nShi0vUs" target="_blank">
+  <h3>Me:</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/v1N7Zv97EnY?si=j7wDSDKve5sshifv&amp;clip=UgkxtFuNQeUu2Cwi_T-zHaKML9nwZW7eKen7&amp;clipt=EJDMBBj3nAc" target="_blank">
+  <h3>G1 - G2 License</h3>
+  <p>JessWithTheS</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/B1PwYBhKXiE?si=YB41WTkySK82sNWN&amp;clip=Ugkx4pWCHrLXA3AeWsdu5s4kvmu0E_CgouPa&amp;clipt=ENWGBRj3mgY" target="_blank">
+  <h3>😂</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/IyT4wfz5ZMg?si=-x3pIh0sLEk7HaOF&amp;clip=UgkxbTc2o6Jxn-aGkxIxYKx6n_1FezB-Ip4x&amp;clipt=EKilDxjt0xE" target="_blank">
+  <h3>Help you understand Linux...</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/G_ENjl6qGvE?si=kIGQbCO_0LKJ9Mkk&amp;clip=UgkxzsGrzdmtKs1CtcYbGehdvJw8GvdewJBG&amp;clipt=ENyMAxiszAY" target="_blank">
+  <h3>Decrepit OS...</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/n5AvrPbrCs4?si=Mc6DC15VPMcB0Zs3&amp;clip=UgkxAPWlNIbWFYxQgo5y44O4mUgY3AQgSeol&amp;clipt=ENfz5AEY3_PlAQ" target="_blank">
+  <h3>🇸🇦</h3>
+  <p>SomeOrdinaryGamers<b>Fan Archive Stream</b></p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/OCaTXyp5F3c?si=rZekCRhJ-1NrJp4H&amp;clip=Ugkxmwnj2ZVQg6ZeJs-p5lvciNYa1Q2VxHpU&amp;clipt=EOqdGRiBkxo" target="_blank">
+  <h3>Noodle</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/6LrCKL3xfRw?si=UZGR40FDb2Vs_qYW&amp;clip=Ugkx74dYRxDkdrxQ87FWqT00IoTtC_qZ_K43&amp;clipt=EOTBAxj-_wM" target="_blank">
+  <h3>Curious George</h3>
+  <p>XboxPlayz</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/cV-Mg1ATxNg?si=6W-SNpPkjDXywMAQ&amp;clip=UgkxDefDU1cAxs3Yjr35MLsfTvl4T428QS_B&amp;clipt=EMX_Jxjc9Cg" target="_blank">
+  <h3>...</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/69dCWRvIzyo?si=vX1AeiX2YTbGDmgD&amp;clip=Ugkxk1eaL6TS3zF3Vneaeme6o7oHkF2Pu69J&amp;clipt=ENOeDhjrkw8" target="_blank">
+  <h3>Cucumber</h3>
+  <p>LinusTechTips</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/fkdt-lWU0xg?si=NGxMJQa7hLEaL7Fh&amp;clip=UgkxdrZtHUwz0nfZTh34MO5OJm2Ud_BkLjNS&amp;clipt=EP3fbhjfhHE" target="_blank">
+  <h3>Creeper farm Nostalgia</h3>
+  <p>Taneesha</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/aI4KE1HwDuE?si=irM4fR1dq3lV4Y-K&amp;clip=UgkxgsraGYEq_wENBTZVjvasAAVB-oP0nbY1&amp;clipt=ELT5MBj6lzM" target="_blank">
+  <h3>Pay with Money, not Data!</h3>
+  <p>Louis Rossmann</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/DGsrbXeLdRg?si=hnjN2fOearAtyJIi&amp;clip=Ugkxz5nuCwcKUDwGa9wO9gdWdU-eigDGuTW1&amp;clipt=EPScCRj50As" target="_blank">
+  <h3>Password Salting</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/bgrwYFuNib0?si=FPl0lkRwdwNO0v4L&amp;clip=Ugkxy-bsmKpDbeIwGRLIuwz_EPTMKWVFypsb&amp;clipt=ENjZCRi4rg0" target="_blank">
+  <h3>That creating stories.</h3>
+  <p>CoryxKenshin</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/zylRUOQ6zVw?si=e4PWHOQfN-DPmFg7&amp;clip=UgkxKaSg1uo0bUiQtzYXAhjVYl43u7EaYt2j&amp;clipt=EI3tHxi26CA" target="_blank">
+  <h3>RCMP / FBI Inspiration</h3>
+  <p>Penguinz0</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/WOKwt7QNa9M?si=e8WoqXN5OUGpOVhr&amp;clip=Ugkxq1Pb2EmYjVC3QsVsJnkuGSb_QDwc8vUt&amp;clipt=EJaVhgEYroqHAQ" target="_blank">
+  <h3>Oops😨😨</h3>
+  <p>YouTube Maniac</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/_lmdp3H6dc0?si=eb8pfigxn3Ay-YPK&amp;clip=UgkxDBR8pZrQxJLiIDgs9lMVpMDpTgiTNa11&amp;clipt=EKzsEhiEwxQ" target="_blank">
+  <h3>Tree Prime Ministers</h3>
+  <p>J.J McCullough</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/L1JCCdo1bG4?si=P3CC5yT9S6IeD_Je&amp;clip=UgkxxR-czJoWTKMQUmv7mp2zBWGhrIEanl0e&amp;clipt=EK3MGxik7x4" target="_blank">
+  <h3>XboxOS uses VM Tech</h3>
+  <p>SomeOrdinaryGamers</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/eKpv5xjSqs0?si=IHaqfu7g7GPngYhK&amp;clip=UgkxoEEQUVygewKUAzL_b9x2cCHQZoG5KdUS&amp;clipt=EKTSBxjqvAo" target="_blank">
+  <h3>Secret Key</h3>
+  <p>Low Level</p></a>
+</li>
+<li>
+  <a href="https://www.youtube.com/embed/03FPDBjpsKo?si=2fAZ1-V-pjyUi010&amp;clip=UgkxyEXTS22cjkNGvszmb4_MUCJcnjYAzSuI&amp;clipt=EIjYCBjorAw" target="_blank">
+  <h3>Invoke Web Request</h3>
+  <p>Low Level</p></a>
+</li>
+</ul>
+
+</body>
+</html>
