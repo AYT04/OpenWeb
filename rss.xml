@@ -11,37 +11,42 @@
 
     <item>
       <title>Laurie Wired</title>
-      <link>https://www.youtube.com/feeds/videos.xml?channel_id=UCJXa3_WNNmIpewOtCHf3B0g</link>
+      <link>https://www.youtube.com/@LaurieWired</link>
+      <description>Content from Laurie Wired's YouTube channel.</description>
       <pubDate>Wed, 23 Jul 2025 17:20:00 EDT</pubDate>
-      <guid isPermaLink="true">https://yt.be/</guid>
+      <guid isPermaLink="true">https://www.youtube.com/@LaurieWired</guid>
     </item>
 
     <item>
       <title>SomeOrdinaryGamers</title>
-      <link>https://www.youtube.com/feeds/videos.xml?channel_id=UCtMVHI3AJD4Qk4hcbZnI9ZQ</link>
+      <link>https://www.youtube.com/@SomeOrdinaryGamers</link>
+      <description>Content from SomeOrdinaryGamers' YouTube channel.</description>
       <pubDate>Wed, 23 Jul 2025 17:25:00 EDT</pubDate>
-      <guid isPermaLink="true">https://yt.be/</guid>
+      <guid isPermaLink="true">https://www.youtube.com/@SomeOrdinaryGamers</guid>
     </item>
 
     <item>
       <title>Cyber Maddy</title>
-      <link>https://www.youtube.com/feeds/videos.xml?channel_id=UCgd5-BWtbgOw5Hx2wP3qxzg</link>
+      <link>https://www.youtube.com/@CyberMaddy</link>
+      <description>Content from Cyber Maddy's YouTube channel.</description>
       <pubDate>Wed, 23 Jul 2025 17:25:00 EDT</pubDate>
-      <guid isPermaLink="true">https://yt.be/</guid>
+      <guid isPermaLink="true">https://www.youtube.com/@CyberMaddy</guid>
     </item>
 
     <item>
       <title>Krissy Plays</title>
-      <link>https://www.youtube.com/feeds/videos.xml?channel_id=UCClc972nxK3t9y9J14XjNaw</link>
+      <link>https://www.youtube.com/@KrissyPlays</link>
+      <description>Content from Krissy Plays' YouTube channel.</description>
       <pubDate>Wed, 23 Jul 2025 17:25:00 EDT</pubDate>
-      <guid isPermaLink="true">https://yt.be/</guid>
+      <guid isPermaLink="true">https://www.youtube.com/@KrissyPlays</guid>
     </item>
 
     <item>
       <title>Haylo Hayley</title>
-      <link>https://www.youtube.com/feeds/videos.xml?channel_id=UCPtRWUbBcPkEjbexT2jiCuA</link>
+      <link>https://www.youtube.com/@HayloHayley</link>
+      <description>Content from Haylo Hayley's YouTube channel.</description>
       <pubDate>Wed, 23 Jul 2025 17:25:00 EDT</pubDate>
-      <guid isPermaLink="true">https://yt.be/</guid>
+      <guid isPermaLink="true">https://www.youtube.com/@HayloHayley</guid>
     </item>
 
   </channel>
