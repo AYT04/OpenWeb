@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYTWiki</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the channel card icons and text shadow */
+        .text-shadow-md {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        /* Ensure font-sans is applied globally */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Modal specific styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem; /* rounded-lg */
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+
+        /* Hide scrollbar for video list, but keep functionality */
+        .video-list::-webkit-scrollbar {
+            display: none;
+        }
+        .video-list {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center p-4 font-sans">
+
+    <header class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mb-8 text-center">
+        <!--  -->
+    </header>
+
+    <div id="app-container" class="w-full max-w-4xl">
+        <!-- API Key Input Form -->
+        <div id="api-key-input" class="w-full max-w-md bg-white shadow-lg rounded-lg p-8 mx-auto">
+            <form id="api-key-form" class="space-y-4">
+                <label for="api-key" class="block text-gray-700 text-sm font-bold mb-2">
+                    Enter your YouTube Data API v3 Key:
+                    <a href="https://console.cloud.google.com/apis/credentials">
+                        <br>Google Cloud Console
+                    </a>
+                </label>
+                <input
+                    type="password"
+                    id="api-key"
+                    class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="API Key?"
+                    required
+                />
+                <button
+                    type="submit"
+                    class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                >
+                    Submit API Key
+                </button>
+            </form>
+        </div>
+
+        <!-- Channel Data Display Area -->
+        <div id="channel-data-display" class="hidden">
+            <button
+                id="change-api-key-btn"
+                class="mb-4 px-4 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out"
+            >
+                Change API Key
+            </button>
+
+            <div id="loading-message" class="text-center text-lg text-gray-700 hidden">Loading channel data...</div>
+            <div id="error-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 hidden" role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span id="error-text" class="block sm:inline"></span>
+            </div>
+            <div id="no-data-message" class="text-center text-lg text-gray-700 hidden">No channel data found.</div>
+
+            <div id="channels-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Channel cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Popup Modal -->
+    <div id="video-modal-overlay" class="modal-overlay">
+        <div class="modal-content w-full md:w-3/4 lg:w-1/2">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
+            <h2 id="modal-channel-title" class="text-2xl font-bold text-gray-800 mb-4"></h2>
+            <div id="modal-loading-message" class="text-center text-lg text-gray-700 hidden">Loading videos...</div>
+            <div id="modal-error-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 hidden" role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span id="modal-error-text" class="block sm:inline"></span>
+            </div>
+            <div id="modal-no-videos-message" class="text-center text-lg text-gray-700 hidden">No videos found for this channel.</div>
+            <div id="video-list" class="video-list space-y-4 max-h-96 overflow-y-auto pr-2">
+                <!-- Videos will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let apiKey = '';
+        const CHANNEL_IDS = [
+            'UCJXa3_WNNmIpewOtCHf3B0g',
+            'UCtMVHI3AJD4Qk4hcbZnI9ZQ',
+            'UCgd5-BWtbgOw5Hx2wP3qxzg',
+            'UCClc972nxK3t9y9J14XjNaw'
+        ];
+
+        // Get DOM elements
+        const apiKeyInputDiv = document.getElementById('api-key-input');
+        const apiKeyForm = document.getElementById('api-key-form');
+        const apiKeyField = document.getElementById('api-key');
+        const channelDataDisplay = document.getElementById('channel-data-display');
+        const changeApiKeyBtn = document.getElementById('change-api-key-btn');
+        const loadingMessage = document.getElementById('loading-message');
+        const errorMessageDiv = document.getElementById('error-message');
+        const errorTextSpan = document.getElementById('error-text');
+        const noDataMessage = document.getElementById('no-data-message');
+        const channelsGrid = document.getElementById('channels-grid');
+
+        // Modal elements
+        const videoModalOverlay = document.getElementById('video-modal-overlay');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalChannelTitle = document.getElementById('modal-channel-title');
+        const modalLoadingMessage = document.getElementById('modal-loading-message');
+        const modalErrorMessageDiv = document.getElementById('modal-error-message');
+        const modalErrorTextSpan = document.getElementById('modal-error-text');
+        const modalNoVideosMessage = document.getElementById('modal-no-videos-message');
+        const videoListContainer = document.getElementById('video-list');
+
+        // Helper function to format numbers for better readability
+        function formatNumber(num) {
+            if (num === undefined || num === null) return 'N/A';
+            num = parseInt(num);
+            if (isNaN(num)) return 'N/A';
+
+            if (num >= 1000000000) return (num / 1000000000).toFixed(1) + 'B';
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toLocaleString(); // Use toLocaleString for numbers < 1000
+        }
+
+        // Function to display an error message in main view
+        function displayError(message) {
+            errorMessageDiv.classList.remove('hidden');
+            errorTextSpan.textContent = message;
+        }
+
+        // Function to hide error message in main view
+        function hideError() {
+            errorMessageDiv.classList.add('hidden');
+            errorTextSpan.textContent = '';
+        }
+
+        // Function to show loading message in main view
+        function showLoading() {
+            loadingMessage.classList.remove('hidden');
+            noDataMessage.classList.add('hidden'); // Hide no data message when loading
+            channelsGrid.innerHTML = ''; // Clear previous cards
+        }
+
+        // Function to hide loading message in main view
+        function hideLoading() {
+            loadingMessage.classList.add('hidden');
+        }
+
+        // Function to render a single channel card
+        function renderChannelCard(channel) {
+            const { snippet, statistics, id } = channel;
+
+            const cardHtml = `
+                <div class="channel-card bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer" data-channel-id="${id}" data-channel-title="${snippet.title}">
+                    <div class="relative h-32 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        ${snippet.thumbnails.high?.url ? `
+                            <img
+                                src="${snippet.thumbnails.high.url}"
+                                alt="${snippet.title} thumbnail"
+                                class="absolute inset-0 w-full h-full object-cover opacity-30"
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x150/60A5FA/FFFFFF?text=No+Thumbnail';"
+                            />` : `
+                            <div class="absolute inset-0 w-full h-full bg-gray-300 flex items-center justify-center">
+                                <span class="text-gray-600 text-lg">No Thumbnail</span>
+                            </div>`
+                        }
+                        <div class="relative z-10 text-white text-xl font-semibold text-shadow-md">
+                            ${snippet.title}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-2">${snippet.title}</h2>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">${snippet.description || 'No description available.'}</p>
+
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                                <span>Views: ${formatNumber(statistics.viewCount)}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.816a3 3 0 002.971-2.5l1.476-9.526A1 1 0 0019 4h-9.28a2 2 0 00-1.817 1.192l-1.1 2.388v.656z"></path></svg>
+                                <span>Subscribers: ${formatNumber(statistics.subscriberCount)}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M7 3a1 1 0 00-2 0v1a1 1 0 002 0V3zM14 3a1 1 0 00-2 0v1a1 1 0 002 0V3zM4 7a1 1 0 00-1 1v6a1 1 0 001 1h12a1 1 0 001-1V8a1 1 0 00-1-1H4z"></path></svg>
+                                <span>Videos: ${formatNumber(statistics.videoCount)}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-purple-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                                <span>Published: ${new Date(snippet.publishedAt).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            channelsGrid.insertAdjacentHTML('beforeend', cardHtml);
+        }
+
+        // Function to fetch channel data from YouTube API
+        async function fetchChannelData() {
+            showLoading();
+            hideError();
+
+            try {
+                const channelIdsString = CHANNEL_IDS.join(',');
+                const apiUrl = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelIdsString}&key=${apiKey}`;
+
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    const errorMessage = data.error?.message || 'Failed to fetch channel data.';
+                    throw new Error(errorMessage);
+                }
+
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(channel => renderChannelCard(channel));
+                    noDataMessage.classList.add('hidden'); // Hide no data message if data is found
+                } else {
+                    noDataMessage.classList.remove('hidden'); // Show no data message if no items
+                }
+            } catch (err) {
+                console.error("Error fetching channel data:", err);
+                displayError(`Error: ${err.message}. Please check your API key or try again later.`);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Function to display an error message in modal
+        function displayModalError(message) {
+            modalErrorMessageDiv.classList.remove('hidden');
+            modalErrorTextSpan.textContent = message;
+        }
+
+        // Function to hide error message in modal
+        function hideModalError() {
+            modalErrorMessageDiv.classList.add('hidden');
+            modalErrorTextSpan.textContent = '';
+        }
+
+        // Function to show loading message in modal
+        function showModalLoading() {
+            modalLoadingMessage.classList.remove('hidden');
+            modalNoVideosMessage.classList.add('hidden');
+            videoListContainer.innerHTML = ''; // Clear previous videos
+        }
+
+        // Function to hide loading message in modal
+        function hideModalLoading() {
+            modalLoadingMessage.classList.add('hidden');
+        }
+
+        // Function to open the video popup
+        async function openChannelVideosPopup(channelId, channelTitle) {
+            videoModalOverlay.classList.add('show');
+            modalChannelTitle.textContent = `Videos from ${channelTitle}`;
+            showModalLoading();
+            hideModalError();
+
+            try {
+                // Fetch videos for the selected channel
+                const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&maxResults=10&order=date&key=${apiKey}`;
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    const errorMessage = data.error?.message || 'Failed to fetch videos.';
+                    throw new Error(errorMessage);
+                }
+
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(video => {
+                        const videoId = video.id.videoId;
+                        const videoTitle = video.snippet.title;
+                        const thumbnailUrl = video.snippet.thumbnails.medium?.url || 'https://placehold.co/320x180/E2E8F0/64748B?text=No+Thumbnail';
+
+                        const videoHtml = `
+                            <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 cursor-pointer transition duration-150 ease-in-out" data-video-id="${videoId}">
+                                <img src="${thumbnailUrl}" alt="${videoTitle}" class="w-24 h-auto rounded-md object-cover flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/320x180/E2E8F0/64748B?text=No+Thumbnail';">
+                                <div class="flex-grow">
+                                    <h3 class="text-md font-semibold text-gray-800 line-clamp-2">${videoTitle}</h3>
+                                    <p class="text-sm text-gray-600">${new Date(video.snippet.publishedAt).toLocaleDateString()}</p>
+                                </div>
+                            </div>
+                        `;
+                        videoListContainer.insertAdjacentHTML('beforeend', videoHtml);
+                    });
+
+                    // Add click listeners to newly added video items
+                    document.querySelectorAll('#video-list div[data-video-id]').forEach(videoElement => {
+                        videoElement.addEventListener('click', (e) => {
+                            const videoId = e.currentTarget.dataset.videoId;
+                            const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                            window.open(embedUrl, '_blank'); // Open in new tab
+                        });
+                    });
+                    modalNoVideosMessage.classList.add('hidden');
+                } else {
+                    modalNoVideosMessage.classList.remove('hidden');
+                }
+
+            } catch (err) {
+                console.error("Error fetching videos:", err);
+                displayModalError(`Error fetching videos: ${err.message}.`);
+            } finally {
+                hideModalLoading();
+            }
+        }
+
+        // Function to close the video popup
+        function closePopup() {
+            videoModalOverlay.classList.remove('show');
+            videoListContainer.innerHTML = ''; // Clear videos when closing
+        }
+
+        // Function to switch views (API key input vs. channel data)
+        function showApiKeyInput() {
+            apiKeyInputDiv.classList.remove('hidden');
+            channelDataDisplay.classList.add('hidden');
+            apiKeyField.value = ''; // Clear the input field
+            apiKey = ''; // Clear the stored API key
+            channelsGrid.innerHTML = ''; // Clear displayed channels
+            hideError();
+            hideLoading();
+            noDataMessage.classList.add('hidden');
+            closePopup(); // Ensure modal is closed if switching back
+        }
+
+        function showChannelDataDisplay() {
+            apiKeyInputDiv.classList.add('hidden');
+            channelDataDisplay.classList.remove('hidden');
+        }
+
+        // Event Listeners
+        apiKeyForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const inputKey = apiKeyField.value.trim();
+            if (inputKey) {
+                apiKey = inputKey;
+                showChannelDataDisplay();
+                fetchChannelData();
+            }
+        });
+
+        changeApiKeyBtn.addEventListener('click', () => {
+            showApiKeyInput();
+        });
+
+        closeModalBtn.addEventListener('click', closePopup);
+        // Close modal if clicking outside the content (on the overlay itself)
+        videoModalOverlay.addEventListener('click', (e) => {
+            if (e.target === videoModalOverlay) {
+                closePopup();
+            }
+        });
+
+        // Delegate click events for channel cards
+        channelsGrid.addEventListener('click', (e) => {
+            const channelCard = e.target.closest('.channel-card');
+            if (channelCard) {
+                const channelId = channelCard.dataset.channelId;
+                const channelTitle = channelCard.dataset.channelTitle;
+                if (channelId && channelTitle) {
+                    openChannelVideosPopup(channelId, channelTitle);
+                }
+            }
+        });
+
+        // Initial state: show API key input
+        window.onload = showApiKeyInput;
+    </script>
+</body>
+</html>
